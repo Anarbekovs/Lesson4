@@ -31,6 +31,7 @@ public class MainActivity extends MvpAppCompatActivity
 
     @BindView(R.id.avatar)  ImageView imageView;
     @BindView(R.id.username) TextView nameView;
+    @BindView(R.id.repos) TextView reposView;
     @BindView(R.id.loadingView) ProgressBar progress;
     @BindView(R.id.contentView) View content;
 
@@ -43,13 +44,13 @@ public class MainActivity extends MvpAppCompatActivity
 
     @Override
     public void setImage(String imageUrl) {
-      /*  Glide.with(this)
-                .load(imageUrl)
-                .into(imageView);*/
-
-        Picasso.get()
+        Glide.with(this)
                 .load(imageUrl)
                 .into(imageView);
+
+//        Picasso.get()
+//                .load(imageUrl)
+//                .into(imageView);
     }
 
     @Override
@@ -74,5 +75,10 @@ public class MainActivity extends MvpAppCompatActivity
     public void finishLoad() {
         progress.setVisibility(View.GONE);
         content.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void setRepos(String str) {
+        reposView.setText(str);
     }
 }

@@ -16,6 +16,7 @@ public interface Endpoints {
     Observable<GithubUser> getUser(
             @Path("user") String user);
 
-    @GET("/repositories")
-    Flowable<List<RepsModel>> getRepos();
+    @GET("users/{user}/repos")
+    Flowable<List<RepsModel>> getRepos(
+            @Path("user") String user);
 }
