@@ -9,4 +9,6 @@ public interface RepsView extends MvpView {
     void startLoad();
 
     void finishLoad();
+
+    void setRepos(String str);
 }

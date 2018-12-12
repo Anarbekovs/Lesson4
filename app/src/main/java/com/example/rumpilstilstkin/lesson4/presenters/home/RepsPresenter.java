@@ -30,6 +30,11 @@ public class RepsPresenter extends MvpPresenter<RepsView> implements Subscriber<
     @Override
     public void onNext(List<RepsModel> data) {
         Log.d("Dto", "size = " + data.size());
+        StringBuilder stringBuilder = new StringBuilder("Public repositories\n\n");
+            for (RepsModel repsModel : data) {
+                stringBuilder.append(repsModel.getName() + "\n\n");
+            }
+        getViewState().setRepos(stringBuilder.toString());
     }
 
     @Override
@@ -45,6 +50,6 @@ public class RepsPresenter extends MvpPresenter<RepsView> implements Subscriber<
 
     private void loadData() {
         getViewState().startLoad();
-        NetApiClient.getInstance().getReps().subscribe(this);
+        NetApiClient.getInstance().getReps("rumpilstilstkin").subscribe(this);
     }
 }
